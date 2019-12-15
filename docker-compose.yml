@@ -1,0 +1,20 @@
+version: "3.6"
+
+services:
+  flyway:
+    image: ${IMAGE_FLYWAY}
+    command: -url=jdbc:postgresql://postgres:5432/${POSTGRES_DB} -connectRetries=60 migrate
+    environment:
+      FLYWAY_SCHEMAS: public
+      FLYWAY_USER: ${POSTGRES_USER}
+      FLYWAY_PASSWORD: ${POSTGRES_PASSWORD}
+
+  postgres:
+    image: ${IMAGE_POSTGRES}
+    restart: always
+    ports:
+      - ${POSTGRES_PORT}:5432
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
