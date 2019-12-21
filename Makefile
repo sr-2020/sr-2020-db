@@ -19,7 +19,7 @@ deploy:
 	{ \
 	sshpass -p $(password) ssh -o StrictHostKeyChecking=no deploy@$(server) "cd /var/services/$(SERVICE) ;\
 	docker-compose pull flyway ;\
-	docker-compose up -d --no-deps flyway ;\
+	docker-compose run flyway -url=jdbc:postgresql://postgres:5432/$(dbname) migrate ;\
 	}
 
 deploy-local:

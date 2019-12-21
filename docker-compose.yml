@@ -3,7 +3,6 @@ version: "3.6"
 services:
   flyway:
     image: ${IMAGE_FLYWAY}
-    command: -url=jdbc:postgresql://postgres:5432/${POSTGRES_DB} -connectRetries=60 migrate
     environment:
       FLYWAY_SCHEMAS: public
       FLYWAY_USER: ${POSTGRES_USER}
