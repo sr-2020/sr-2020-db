@@ -12,3 +12,11 @@ jobs:
       script:
         - make deploy server=instance.evarun.ru password=$USER_PASSWORD dbname=rc_sr2020
       if: branch = rc
+
+addons:
+  ssh_known_hosts:
+    - instance.evarun.ru
+  apt:
+    packages:
+      - sshpass
+      - sox
