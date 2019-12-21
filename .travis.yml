@@ -11,5 +11,4 @@ jobs:
     - stage: deploy RC
       script:
         - make deploy server=instance.evarun.ru password=$USER_PASSWORD dbname=rc_sr2020
-      on:
-        branch: rc
+      if: branch = rc
