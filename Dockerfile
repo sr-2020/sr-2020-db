@@ -1,3 +1,3 @@
-FROM flyway/flyway:6.1.1-alpine
+FROM flyway/flyway:6.1.2-alpine
 
-ADD migrations/versioned /flyway/sql
+ADD sql /flyway/sql
