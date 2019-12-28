@@ -13,6 +13,11 @@ jobs:
         - make deploy server=instance.evarun.ru password=$USER_PASSWORD dbname=rc_sr2020
       if: branch = rc
 
+    - stage: deploy Production
+      script:
+        - make deploy server=instance.evarun.ru password=$USER_PASSWORD dbname=sr2020
+      if: branch = master
+
 addons:
   ssh_known_hosts:
     - instance.evarun.ru
