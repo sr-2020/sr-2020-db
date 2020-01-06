@@ -6,25 +6,27 @@ create table if not exists player
     joinid integer
 );
 
-alter table player owner to backend;
+alter table player
+    owner to backend;
 
 create table if not exists character
 (
-    id           serial not null
+    id           serial  not null
         constraint character_pk primary key,
     hacker_login varchar(50),
     hacker_pwd   varchar(50),
     status       varchar(50),
-    player       integer                                               not null
+    player       integer not null
         constraint character_player_id_fk references player,
-    true_race    integer                                               not null
+    true_race    integer not null
 );
 
-alter table character owner to backend;
+alter table character
+    owner to backend;
 
 create table if not exists body
 (
-    id serial not null
+    id        serial not null
         constraint body_pk primary key,
     body_type integer,
     max_hp    integer,
@@ -34,39 +36,42 @@ create table if not exists body
     is_active boolean
 );
 
-alter table body owner to backend;
+alter table body
+    owner to backend;
 
 create table if not exists body_mod_type
 (
-    id serial not null
+    id            serial not null
         constraint bodymodtype_pk primary key,
     name          varchar,
     addition_type varchar,
     addition_val  integer
 );
 
-alter table body_mod_type owner to backend;
+alter table body_mod_type
+    owner to backend;
 
 create table if not exists sin
 (
-    id serial not null
+    id          serial       not null
         constraint sin_pk primary key,
-    sin_text    varchar(255)                                    not null
+    sin_text    varchar(255) not null
         constraint uk_rbsiv90dyf0wibv0nja5q07t5 unique,
-    person_name varchar(255)                                    not null,
-    race        integer                                         not null,
-    citizenship integer                                         not null,
+    person_name varchar(255) not null,
+    race        integer      not null,
+    citizenship integer      not null,
     character   integer
         constraint sin_character_id_fk references character
 );
 
-alter table sin owner to backend;
+alter table sin
+    owner to backend;
 
 create unique index if not exists sin_sin_text_uindex on sin (sin_text);
 
 create table if not exists body_mods
 (
-    id serial not null
+    id            serial not null
         constraint body_mods_pk primary key,
     body          integer
         constraint body_mods_to_body__fk references body,
@@ -74,7 +79,8 @@ create table if not exists body_mods
         constraint body__mods__type__fk references body_mod_type
 );
 
-alter table body_mods owner to backend;
+alter table body_mods
+    owner to backend;
 
 create unique index if not exists body_mods_id_uindex on body_mods (id);
 
@@ -116,7 +122,7 @@ alter table foundation_room
 
 create table if not exists paradigm
 (
-    id serial not null
+    id          serial not null
         constraint paradigm_pk primary key,
     name        varchar(200),
     description varchar
@@ -127,7 +133,7 @@ alter table paradigm
 
 create table if not exists host
 (
-    id serial not null
+    id          serial not null
         constraint host_pk primary key,
     address     varchar(100),
     description varchar(255),
@@ -137,7 +143,8 @@ create table if not exists host
         constraint host_paradigm_id_fk references paradigm
 );
 
-alter table host owner to backend;
+alter table host
+    owner to backend;
 
 create table if not exists foundation_node
 (
@@ -149,7 +156,8 @@ create table if not exists foundation_node
     order_index integer
 );
 
-alter table foundation_node owner to backend;
+alter table foundation_node
+    owner to backend;
 
 create table if not exists foundation_run
 (
@@ -165,7 +173,8 @@ create table if not exists foundation_run
         constraint foundation_run_dungeon_master_id_fk references dungeon_master
 );
 
-alter table foundation_run owner to backend;
+alter table foundation_run
+    owner to backend;
 
 create table if not exists foundation_run_participant
 (
@@ -177,11 +186,12 @@ create table if not exists foundation_run_participant
         constraint foundation_run_participant_foundationRun_id_fk references foundation_run
 );
 
-alter table foundation_run_participant owner to backend;
+alter table foundation_run_participant
+    owner to backend;
 
 create table if not exists region
 (
-    id serial not null
+    id   serial not null
         constraint region_pk primary key,
     name varchar(255)
 );
@@ -191,7 +201,7 @@ alter table region
 
 create table if not exists location
 (
-    id serial not null
+    id   serial not null
         constraint location_pk primary key,
     name varchar(255)
 );
@@ -201,15 +211,15 @@ alter table location
 
 create table if not exists geoposition
 (
-    id serial not null
+    id          serial  not null
         constraint geoposition_pk primary key,
     since       timestamp,
     till        timestamp,
-    body_id     integer                                                 not null
+    body_id     integer not null
         constraint geoposition_body_id_fk references body,
-    location_id integer                                                 not null
+    location_id integer not null
         constraint geoposition_location_id_fk references location,
-    sin         integer                                                 not null
+    sin         integer not null
         constraint geoposition_sin_id_fk references sin
 );
 
@@ -222,11 +232,12 @@ create table if not exists authority
         constraint authority_pkey primary key
 );
 
-alter table authority owner to backend;
+alter table authority
+    owner to backend;
 
 create table if not exists user_login
 (
-    id serial not null
+    id            serial       not null
         constraint user_login_pkey primary key,
     password_hash varchar(255) not null,
     user_name     varchar(50)  not null
@@ -239,11 +250,11 @@ alter table user_login
 
 create table if not exists user_authority
 (
-    id serial not null
+    id         serial       not null
         constraint user_authority_pk primary key,
-    user_login integer                                                    not null
+    user_login integer      not null
         constraint user_authority_user_login_id_fk references user_login,
-    authority  varchar(255)                                               not null
+    authority  varchar(255) not null
         constraint user_authority_authority_name_fk references authority,
     name       varchar(255)
 );
