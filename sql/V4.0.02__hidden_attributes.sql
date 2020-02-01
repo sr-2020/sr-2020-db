@@ -15,3 +15,6 @@ alter table aspect
 
 alter table character_feature
     add hidden boolean default false not null;
+
+alter table if exists metatype
+    rename column karma to cost;
