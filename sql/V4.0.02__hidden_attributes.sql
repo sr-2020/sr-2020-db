@@ -18,3 +18,4 @@ alter table character_feature
 
 alter table if exists metatype
     rename column karma to cost;
+
