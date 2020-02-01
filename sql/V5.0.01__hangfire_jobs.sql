@@ -1,7 +1,7 @@
 create table if not exists hangfire_job_type
 (
     id   serial  not null,
-	name varchar(255) not null
+	name text COLLATE not null
 );
 
 alter table hangfire_job_type
@@ -11,14 +11,14 @@ alter table hangfire_job_type
 create table if not exists hangfire_job
 (
     id   serial  not null,
-	start_time datetime not null,
-    end_time datetime not null,
-	cron varchar(255) not null,
-	job_name varchar(255) not null,
+	start_time timestamp with time zone not null,
+    end_time timestamp with time zone not null,
+	cron text COLLATE not null,
+	job_name text COLLATE not null,
 	constraint job_type references hangfire_job_type on delete cascade,
-	hangfire_startid varchar(255) null,
-	hangfire_reccurentid varchar(255) null,
-	hangfire_endid varchar(255) null
+	hangfire_startid text COLLATE null,
+	hangfire_reccurentid text COLLATE null,
+	hangfire_endid text COLLATE null
 );
 
 alter table hangfire_job
