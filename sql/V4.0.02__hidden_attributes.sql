@@ -2,7 +2,7 @@ alter table if exists metatype
     add if not exists hidden boolean default false not null;
 
 alter table if exists metatype
-    rename column karma to cost;
+    rename column karma to cost2;
 
 alter table if exists ability_pack
     add if not exists  hidden boolean default false not null;
