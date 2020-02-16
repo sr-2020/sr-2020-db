@@ -42,9 +42,9 @@ create table if not exists sin_details
 (
     id   serial  not null
 		constraint sin_details_pk primary key,
-	wallet integer  not null,
+	wallet integer  not null
 		constraint sin_details_wallet_fk references wallet(id) on delete cascade,
-	sin integer not 
+	sin integer not null
 		constraint sin_details_sin_fk references sin(id) on delete cascade,
 	lifestyle integer not null,
 		constraint sin_details_lifestyle_fk references lifestyle(id) on delete cascade,
