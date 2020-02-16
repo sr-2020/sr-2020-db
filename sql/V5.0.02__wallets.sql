@@ -46,7 +46,7 @@ create table if not exists sin_details
 		constraint sin_details_wallet_fk references wallet(id) on delete cascade,
 	sin integer not null
 		constraint sin_details_sin_fk references sin(id) on delete cascade,
-	lifestyle integer not null,
+	lifestyle integer not null
 		constraint sin_details_lifestyle_fk references lifestyle(id) on delete cascade,
 	scoring integer null,
 	work integer null,
