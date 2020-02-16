@@ -1,0 +1,1 @@
+alter table sin_details add constraint sin_details_sin_fk FOREIGN KEY (sin) REFERENCES sin (id);
