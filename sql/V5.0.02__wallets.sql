@@ -1,22 +1,3 @@
-create table if not exists sin_details
-(
-    id   serial  not null
-		constraint sin_details_pk primary key,
-	wallet integer  not null,
-		constraint sin_details_wallet_fk references wallet(id) on delete cascade,
-	sin integer not 
-		constraint sin_details_sin_fk references sin(id) on delete cascade,
-	lifestyle integer not null,
-		constraint sin_details_lifestyle_fk references lifestyle(id) on delete cascade,
-	scoring integer null,
-	work integer null,
-	ikar integer null
-	
-);
-alter table sin_details
-    owner to billing;
-
-
 create table if not exists lifestyle
 (
     id serial  not null
@@ -57,3 +38,19 @@ create table if not exists transfer
 alter table transfer
     owner to billing;
 
+create table if not exists sin_details
+(
+    id   serial  not null
+		constraint sin_details_pk primary key,
+	wallet integer  not null,
+		constraint sin_details_wallet_fk references wallet(id) on delete cascade,
+	sin integer not 
+		constraint sin_details_sin_fk references sin(id) on delete cascade,
+	lifestyle integer not null,
+		constraint sin_details_lifestyle_fk references lifestyle(id) on delete cascade,
+	scoring integer null,
+	work integer null,
+	ikar integer null
+);
+alter table sin_details
+    owner to billing;
