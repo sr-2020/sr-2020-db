@@ -1,0 +1,1 @@
+alter table sin_details drop constraint if exists sin_details_sin_fk;
