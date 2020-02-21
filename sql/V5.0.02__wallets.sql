@@ -6,7 +6,7 @@ create table if not exists lifestyle
 	
 );
 alter table lifestyle
-    owner to billing;
+    owner to backend;
 
 create table if not exists wallet
 (
@@ -16,7 +16,7 @@ create table if not exists wallet
 	
 );
 alter table wallet
-    owner to billing;
+    owner to backend;
 
 create table if not exists transfer
 (
@@ -36,7 +36,7 @@ create table if not exists transfer
 	
 );
 alter table transfer
-    owner to billing;
+    owner to backend;
 
 create table if not exists sin_details
 (
@@ -53,4 +53,4 @@ create table if not exists sin_details
 	ikar integer null
 );
 alter table sin_details
-    owner to billing;
+    owner to backend;

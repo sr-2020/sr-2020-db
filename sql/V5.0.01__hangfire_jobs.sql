@@ -6,7 +6,7 @@ create table if not exists hangfire_job_type
 );
 
 alter table hangfire_job_type
-    owner to billing;
+    owner to backend;
 
 create table if not exists hangfire_job
 (
@@ -24,4 +24,4 @@ create table if not exists hangfire_job
 );
 
 alter table hangfire_job
-    owner to billing;
+    owner to backend;
