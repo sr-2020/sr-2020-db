@@ -43,7 +43,7 @@ install:
 	cp .env.example .env
 
 install-docker-compose:
-	curl -L https://github.com/docker/compose/releases/download/$(DOCKER_COMPOSE_VERSION)/docker-compose-Linux-x86_64 > /tmp/docker-compose
+	curl -L https://github.com/docker/compose/releases/download/$(DOCKER_COMPOSE_VERSION)/docker-compose-`uname -s`-`uname -m` > /tmp/docker-compose
 	chmod +x /tmp/docker-compose
 	sudo mv /tmp/docker-compose /usr/local/bin/docker-compose
 	docker-compose -v
