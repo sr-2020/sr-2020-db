@@ -1,0 +1,1 @@
+alter table transfer add column operation_time timestamp with time zone not null
