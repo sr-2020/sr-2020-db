@@ -4,7 +4,8 @@ create table if not exists corporation_wallet
 		constraint corporation_wallet_pk primary key,
 	id_foreign integer not null,
 	wallet integer  not null
-		constraint corporation_wallet_fk references wallet(id) on delete cascade
+		constraint corporation_wallet_fk references wallet(id) on delete cascade,
+	UNIQUE(id_foreign)
 	
 );
 
@@ -17,7 +18,8 @@ create table if not exists shop_wallet
 		constraint shop_wallet_pk primary key,
 	id_foreign integer not null,
 	wallet integer  not null
-		constraint shop_wallet_fk references wallet(id) on delete cascade
+		constraint shop_wallet_fk references wallet(id) on delete cascade,
+	UNIQUE(id_foreign)
 	
 );
 
