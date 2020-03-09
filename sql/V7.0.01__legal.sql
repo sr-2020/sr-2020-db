@@ -57,6 +57,6 @@ create table if not exists renta
 	price integer not null 
 		constraint price_price_fk references price(id) on delete cascade
 
-)
+);
 alter table renta
     owner to backend;
