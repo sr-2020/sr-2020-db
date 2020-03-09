@@ -55,7 +55,7 @@ create table if not exists renta
 	id serial  not null
 		constraint price_pk primary key,
 	price integer not null 
-		constraint price_price_fk references price(id) on delete cascade,
+		constraint price_price_fk references price(id) on delete cascade
 
 )
 alter table renta
