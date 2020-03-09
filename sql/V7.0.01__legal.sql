@@ -1,4 +1,4 @@
-alter SIN add CONSTRAINT character_unique UNIQUE(character);
+alter table SIN add CONSTRAINT character_unique UNIQUE(character);
 
 create table if not exists corporation_wallet
 (
