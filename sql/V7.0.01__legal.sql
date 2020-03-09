@@ -1,3 +1,5 @@
+alter SIN add CONSTRAINT character_unique UNIQUE(character);
+
 create table if not exists corporation_wallet
 (
     id serial  not null
