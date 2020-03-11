@@ -1,3 +1,5 @@
+do $$
+begin
 	if exists (select * from system_settings where key = 'wood') then
 		update system_settings set value = '100' where key = 'wood';
 	else
@@ -28,3 +30,5 @@
 	else
 		insert into system_settings (key, value) values('iridium', '600');
 	end if;
+end
+$$
