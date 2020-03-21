@@ -57,7 +57,7 @@ create table if not exists contract
 	corporation integer not null
 		constraint contract_corporation_fk references corporation_wallet(id)
 
-)
+);
 alter table contract
     owner to backend;
 	
@@ -70,7 +70,7 @@ create table if not exists contract_limit
 	sku integer not null
 		constraint contract_limit_sku_fk references sku(id)
 
-)
+);
 alter table contract
     owner to backend;
 	
