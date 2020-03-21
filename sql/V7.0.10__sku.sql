@@ -44,7 +44,7 @@ create table if not exists specialisation
 	nomenklatura integer not null
 		constraint specialisation_nomenklatura_fk references nomenklatura(id)
 
-)
+);
 alter table specialisation
     owner to backend;
 	
