@@ -8,3 +8,4 @@ begin
 		insert into shop_wallet(wallet, name, lifestyle) values(myid, 'testshop', 1);
 	end if;
 end
+$$
