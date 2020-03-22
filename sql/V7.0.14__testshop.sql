@@ -1,4 +1,4 @@
-alter table shop_wallet drop column foreign;
+alter table shop_wallet drop column id_foreign;
 do $$
 declare myid integer;
 begin
