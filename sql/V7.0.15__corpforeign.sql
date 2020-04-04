@@ -1,0 +1,1 @@
+alter table corporation_wallet drop column if exists id_foreign;
