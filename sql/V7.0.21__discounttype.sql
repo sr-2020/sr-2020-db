@@ -1,0 +1,1 @@
+alter table product_type add column if not exists discount_type integer not null default 1;
