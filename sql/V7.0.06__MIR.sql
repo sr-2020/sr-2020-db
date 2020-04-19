@@ -1,6 +1,9 @@
 do $$
 declare myid integer;
 begin
+
+    alter table wallet drop column if exists lifestyle;
+
 if not EXISTS  (select * from wallet where wallet_type = 3) then
 	insert into wallet(balance, wallet_type)
 		values(100000000, 3)
