@@ -1,0 +1,1 @@
+alter table shop_wallet add column if not exists commission numeric not null default 0;
