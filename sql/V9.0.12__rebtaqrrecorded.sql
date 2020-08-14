@@ -1,0 +1,1 @@
+alter table renta add column if not exists qr_recorded varchar(200) null;
