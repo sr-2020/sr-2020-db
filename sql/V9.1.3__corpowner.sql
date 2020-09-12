@@ -1,1 +1,1 @@
-ALTER TABLE corporation_wallet ALTER COLUMN owner SET NOT NULL default(0);
+ALTER TABLE corporation_wallet ALTER COLUMN owner SET NOT NULL;
