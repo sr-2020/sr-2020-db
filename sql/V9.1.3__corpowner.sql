@@ -1,1 +1,1 @@
-alter table corporation_wallet alter column if not exists owner integer not null default(0);
+ALTER TABLE corporation_wallet ALTER COLUMN owner SET NOT NULL;
