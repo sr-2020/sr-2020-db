@@ -1,0 +1,1 @@
+alter table corporation_wallet alter column if not exists owner integer not null default(0);
