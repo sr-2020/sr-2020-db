@@ -1,1 +1,1 @@
-alter table nomenklatura add column if not exists secret varchar(max) null;
+alter table nomenklatura add column if not exists secret text null;
