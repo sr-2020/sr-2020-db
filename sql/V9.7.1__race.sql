@@ -1,0 +1,1 @@
+alter table sin add if not exists column race int null;
