@@ -1,0 +1,1 @@
+alter table product_type add if not exists external_table text null;
