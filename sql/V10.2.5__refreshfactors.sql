@@ -2,8 +2,8 @@ do $$
 declare catid integer;
 begin
 
-delete from system_settings where ss_key = 'factor_lschange';
-delete from system_settings where ss_key = 'factor_test';
+delete from system_settings where key = 'factor_lschange';
+delete from system_settings where key = 'factor_test';
 delete from scoring_event;
 delete from current_factor;
 delete from current_category;
