@@ -2,10 +2,12 @@
 delete from transfer;
 delete from renta;
 delete from price;
+delete from qr_shop;
+delete from specialisation;
 delete from sku;
 delete from nomenklatura;
 delete from product_type;
-delete from system_settings where ss_key = 'insuranceid';
+delete from system_settings where key = 'insuranceid';
 
 
 
