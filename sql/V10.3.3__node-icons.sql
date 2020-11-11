@@ -44,3 +44,4 @@ create table if not exists icon_portal
     color varchar(255) not null
 );
 
+
