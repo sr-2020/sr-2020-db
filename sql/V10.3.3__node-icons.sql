@@ -43,3 +43,4 @@ create table if not exists icon_portal
             references node_icon on delete cascade,
     color varchar(255) not null
 );
+
