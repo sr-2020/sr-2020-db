@@ -27,7 +27,7 @@ alter table evt_health_state
 	add constraint evt_health_state_location_id_fk
 		foreign key (location) references location;
 
-alter table evt_dumpshock
+alter table evt_implant_install
 	add if not exists location int;
 
 alter table evt_implant_install
