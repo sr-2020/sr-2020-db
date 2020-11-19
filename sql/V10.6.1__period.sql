@@ -1,0 +1,1 @@
+alter table billing_beat add period integer not null;
