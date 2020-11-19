@@ -1,0 +1,8 @@
+flyway:
+  schemas: public
+  url: jdbc:postgresql://postgres13:5432/rc_sr2020
+
+image:
+  repository: sr2020/db
+  tag: latest
+  pullPolicy: IfNotPresent
