@@ -32,7 +32,9 @@ jobs:
           kubectl config set-context --current --namespace=production
           curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
           helm version
-          helm upgrade rc-flyway-new helm/flyway/ -f helm/flyway/values/rc/values.yaml --wait --set image.tag=$GITHUB_SHA
+          helm delete rc-flyway-new
+          helm install rc-flyway-new helm/flyway/ -f helm/flyway/values/rc/values.yaml --wait --set image.tag=$GITHUB_SHA
+          kubectl logs -f $(kubectl get pods -l "job-name=rc-flyway-new" --no-headers -o custom-columns=":metadata.name")
 
   deploy_production:
     if: github.ref == 'refs/heads/master'
