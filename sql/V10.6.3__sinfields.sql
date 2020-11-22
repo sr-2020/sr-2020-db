@@ -1,3 +1,4 @@
+alter table sin drop column if exists citizenship;
 alter table sin add mt_old integer null;
 alter table sin add nation text null;
 alter table sin add nation_display text null;
