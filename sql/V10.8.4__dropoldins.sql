@@ -1,0 +1,1 @@
+alter table sin drop column if exists old_ins;
