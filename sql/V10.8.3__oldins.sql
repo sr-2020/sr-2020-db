@@ -1,0 +1,1 @@
+alter table sin add old_ins integer null;
