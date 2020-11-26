@@ -1,0 +1,1 @@
+alter table scoring drop column if exists current_scoring;
