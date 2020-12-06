@@ -1,0 +1,70 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: {{ .Release.Name }}
+spec:
+  schedule: "0 0 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          containers:
+            - name: backup
+              image: "{{ .Values.image.backup.repository }}:{{ .Values.image.backup.tag }}"
+              imagePullPolicy: {{ .Values.image.backup.pullPolicy }}
+              args:
+                - /bin/sh
+                - -c
+                - mkdir /tmp/backup && /root/krohobor db dumpall
+              env:
+                - name: PGHOST
+                  valueFrom:
+                    configMapKeyRef:
+                      name: {{ .Release.Name }}-configmap
+                      key: PGHOST
+                - name: PGPORT
+                  valueFrom:
+                    configMapKeyRef:
+                      name: {{ .Release.Name }}-configmap
+                      key: PGPORT
+                - name: APP_PORT
+                  valueFrom:
+                    configMapKeyRef:
+                      name: {{ .Release.Name }}-configmap
+                      key: APP_PORT
+                - name: APP_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: backup
+                      key: appPassword
+                - name: APP_CATALOG
+                  valueFrom:
+                    configMapKeyRef:
+                      name: {{ .Release.Name }}-configmap
+                      key: APP_CATALOG
+                - name: AWS_ACCESS_KEY_ID
+                  valueFrom:
+                    secretKeyRef:
+                      name: backup
+                      key: accessKeyId
+                - name: AWS_SECRET_ACCESS_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: backup
+                      key: secretAccessKey
+                - name: AWS_REGION
+                  valueFrom:
+                    configMapKeyRef:
+                      name: {{ .Release.Name }}-configmap
+                      key: AWS_REGION
+                - name: PGUSER
+                  valueFrom:
+                    secretKeyRef:
+                      name: postgres
+                      key: user
+                - name: PGPASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: postgres
+                      key: password

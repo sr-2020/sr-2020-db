@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap
+data:
+  PGHOST: {{ .Values.postgres.host | quote }}
+  PGPORT: {{ .Values.postgres.port | quote }}
+  APP_PORT: {{ .Values.app.port | quote }}
+  APP_CATALOG: {{ .Values.app.catalog | quote }}
+  AWS_REGION: {{ .Values.app.aws.region | quote }}
