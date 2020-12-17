@@ -32,11 +32,12 @@ jobs:
           kubectl config set-context --current --namespace=production
           curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
           helm version
-          helm upgrade rc-flyway helm/flyway/ --wait \
+          helm delete rc-flyway
+          helm install rc-flyway helm/flyway/ --wait \
             -f helm/flyway/values/rc/values.yaml \
             --set image.tag=$GITHUB_SHA
           sleep 10
-          kubectl logs -c flyway -l run=rc-flyway
+          kubectl logs -c flyway -l job-name=rc-flyway
 
   deploy_production:
     if: github.ref == 'refs/heads/master'
@@ -54,8 +55,9 @@ jobs:
           kubectl config set-context --current --namespace=production
           curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
           helm version
-          helm upgrade flyway helm/flyway/ --wait \
+          helm delete flyway
+          helm install flyway helm/flyway/ --wait \
             -f helm/flyway/values/prod/values.yaml \
             --set image.tag=$GITHUB_SHA
           sleep 10
-          kubectl logs -c flyway -l run=flyway
+          kubectl logs -c flyway -l job-name=flyway

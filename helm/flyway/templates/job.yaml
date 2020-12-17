@@ -18,12 +18,12 @@ spec:
             - name: FLYWAY_SCHEMAS
               valueFrom:
                 configMapKeyRef:
-                  name: flyway-configmap
+                  name: {{ .Release.Name }}-configmap
                   key: FLYWAY_SCHEMAS
             - name: FLYWAY_URL
               valueFrom:
                 configMapKeyRef:
-                  name: flyway-configmap
+                  name: {{ .Release.Name }}-configmap
                   key: FLYWAY_URL
             - name: FLYWAY_USER
               valueFrom:
