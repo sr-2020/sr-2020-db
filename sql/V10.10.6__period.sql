@@ -30,7 +30,7 @@ create table if not exists beat_history
 	billing_beat integer not null 
 		CONSTRAINT history_beat_fk references billing_beat(id);
 	billing_action integer not null 
-		CONSTRAINT history_фсешщт_fk references billing_action(id);
+		CONSTRAINT history_action_fk references billing_action(id);
 );
 alter table billing_action
     owner to backend;	
@@ -52,4 +52,3 @@ insert into billing_action(alias, cycle, beat) values('inflation', 0, 4, true);
 insert into billing_action(alias, cycle, beat) values('ikar', 0, 4, true);
 insert into billing_action(alias, cycle, beat) values('scoring', 0, 4, true);
 insert into system_settings(key, value) values('token', 'test');
-
