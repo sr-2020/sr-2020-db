@@ -47,8 +47,8 @@ alter table billing_beat add column if not exists billing_cycle integer not null
 	
 
 
-insert into billing_action(alias, cycle, beat) values('renta', 0, 0, true);
-insert into billing_action(alias, cycle, beat) values('inflation', 0, 4, true);
-insert into billing_action(alias, cycle, beat) values('ikar', 0, 4, true);
-insert into billing_action(alias, cycle, beat) values('scoring', 0, 4, true);
+insert into billing_action(alias, cycle, beat, enabled) values('renta', 0, 0, true);
+insert into billing_action(alias, cycle, beat, enabled) values('inflation', 0, 4, true);
+insert into billing_action(alias, cycle, beat, enabled) values('ikar', 0, 4, true);
+insert into billing_action(alias, cycle, beat, enabled) values('scoring', 0, 4, true);
 insert into system_settings(key, value) values('token', 'test');
