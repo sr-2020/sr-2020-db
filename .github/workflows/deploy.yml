@@ -37,7 +37,7 @@ jobs:
             -f helm/flyway/values/rc/values.yaml \
             --set image.tag=$GITHUB_SHA
           sleep 10
-          kubectl logs -c flyway -l job-name=rc-flyway
+          kubectl logs -c flyway -l job-name=rc-flyway --tail=100
 
   deploy_production:
     if: github.ref == 'refs/heads/master'
@@ -60,4 +60,4 @@ jobs:
             -f helm/flyway/values/prod/values.yaml \
             --set image.tag=$GITHUB_SHA
           sleep 10
-          kubectl logs -c flyway -l job-name=flyway
+          kubectl logs -c flyway -l job-name=flyway --tail=100
