@@ -30,7 +30,7 @@ create table if not exists beat_history
 	billing_beat integer not null 
 		CONSTRAINT history_beat_fk references billing_beat(id),
 	billing_action integer not null 
-		CONSTRAINT history_action_fk references billing_action(id);
+		CONSTRAINT history_action_fk references billing_action(id)
 );
 alter table billing_action
     owner to backend;	
