@@ -52,3 +52,4 @@ insert into billing_action(alias, cycle, beat) values('inflation', 0, 4, true);
 insert into billing_action(alias, cycle, beat) values('ikar', 0, 4, true);
 insert into billing_action(alias, cycle, beat) values('scoring', 0, 4, true);
 insert into system_settings(key, value) values('token', 'test');
+
