@@ -28,7 +28,7 @@ create table if not exists beat_history
 	comment text null,
 	success boolean not null default false,
 	billing_beat integer not null 
-		CONSTRAINT history_beat_fk references billing_beat(id);
+		CONSTRAINT history_beat_fk references billing_beat(id),
 	billing_action integer not null 
 		CONSTRAINT history_action_fk references billing_action(id);
 );
