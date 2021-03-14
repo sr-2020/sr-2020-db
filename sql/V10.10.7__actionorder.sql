@@ -1,0 +1,1 @@
+alter table billing_action add if not exists order integer not null default 0;
