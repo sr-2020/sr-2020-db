@@ -1,1 +1,1 @@
-alter table billing_action add if not exists order integer not null default 0;
+alter table billing_action add if not exists orderby integer not null default 0;

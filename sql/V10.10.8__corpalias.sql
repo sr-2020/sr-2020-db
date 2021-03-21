@@ -1,4 +1,4 @@
-alter table corporation_wallet add alias text null;
+alter table corporation_wallet add if not exists alias text null;
 update corporation_wallet set alias = 'ares' where name = 'Ares Macrotechnolgy';
 update corporation_wallet set alias = 'aztechnology' where name = 'Aztechnology (ORO)';
 update corporation_wallet set alias = 'saederKrupp' where name = 'Saeder-Krupp';
