@@ -1,0 +1,1 @@
+alter table current_factor add  if not exists current_category integer not null default 0;
