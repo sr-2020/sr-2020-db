@@ -1,0 +1,1 @@
+alter table billing_beat add beat_type integer not null default 0;
