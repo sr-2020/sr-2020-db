@@ -1,0 +1,1 @@
+alter table transfer add column overdraft boolean not null default false;
