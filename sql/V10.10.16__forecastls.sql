@@ -1,0 +1,1 @@
+alter table wallet add column forecast_balance numeric not null default 0;
