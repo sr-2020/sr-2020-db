@@ -1,0 +1,1 @@
+insert into product_type (name, discount_type, external_id, alias) values('Лицензии', 1, 0, 'Licences')
