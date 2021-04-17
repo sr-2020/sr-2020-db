@@ -1,0 +1,1 @@
+alter table contract add column status int not null default 1;
