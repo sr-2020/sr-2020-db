@@ -18,9 +18,11 @@ delete
 FROM build_gf;
 
 delete
-from archetype_feature af;
+from feature;
+
 delete
-from aspect_discount;
+from archetype_feature af;
+
 delete
 from aspect af;
 
