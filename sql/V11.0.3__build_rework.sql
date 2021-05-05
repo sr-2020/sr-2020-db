@@ -18,13 +18,13 @@ delete
 FROM build_gf;
 
 delete
+from evt_feature_used;
+
+delete
 from feature;
 
 delete
-from archetype_feature af;
-
-delete
-from aspect af;
+from archetype_feature;
 
 
 update archetype
