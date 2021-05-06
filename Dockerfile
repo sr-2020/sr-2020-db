@@ -1,3 +1,3 @@
-FROM flyway/flyway:6.1.2-alpine
+FROM flyway/flyway:7.8.2-alpine
 
 ADD sql /flyway/sql
