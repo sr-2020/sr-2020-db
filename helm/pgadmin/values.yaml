@@ -1,0 +1,16 @@
+replicaCount: 1
+
+postgres:
+  host: postgres13
+
+app:
+  email: admin@evarun.ru
+
+image:
+  repository: dpage/pgadmin4
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: NodePort
+  port: 80
