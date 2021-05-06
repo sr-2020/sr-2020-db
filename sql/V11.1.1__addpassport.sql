@@ -2,12 +2,13 @@ create table if not exists passport
 (
     id  serial  not null
 	constraint passport_pk primary key,
-	sin_text       varchar(255) constraint uk_rbsiv90dyf0wibv0nja5q07t5 unique,
+	sin_text       varchar(255),
 	person_name    varchar(255),
     metatype       integer constraint passport_metatype_fk references metatype on delete cascade,
     citizenship    varchar(255),
     mortgagee     varchar(255),
-    viza           varchar(255)
+    viza           varchar(255),
+	UNIQUE(sin_text)
 );
 alter table passport
     owner to backend;
