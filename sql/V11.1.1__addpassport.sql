@@ -14,16 +14,16 @@ alter table passport
     owner to backend;
 
 
-alter table sin add COLUMN if not exist passport integer NULL 
+alter table sin add COLUMN if not exists passport integer NULL 
 	CONSTRAINT sin_passport_fk references passport(id);
 	
 alter table sin drop constraint IF EXISTS sin_metatype_fk;
 
-alter table sin add COLUMN if not exist metatype_last integer NULL 
+alter table sin add COLUMN if not exists metatype_last integer NULL 
 	CONSTRAINT sin_metatype_fk references metatype(id);
 	
-alter table sin add COLUMN if not exist citizenship_last integer NULL;
+alter table sin add COLUMN if not exists citizenship_last integer NULL;
 	
-alter table sin add COLUMN if not exist mortgagee_last integer NULL;
+alter table sin add COLUMN if not exists mortgagee_last integer NULL;
 
-alter table sin add COLUMN if not exist viza_last integer NULL;
+alter table sin add COLUMN if not exists viza_last integer NULL;
