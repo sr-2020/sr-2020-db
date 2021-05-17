@@ -1,0 +1,1 @@
+alter table system_settings alter column value VARCHAR(1000);
