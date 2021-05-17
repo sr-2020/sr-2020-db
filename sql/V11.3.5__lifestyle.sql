@@ -1,1 +1,1 @@
-alter table system_settings alter column value VARCHAR(1000);
+alter table system_settings alter column value TYPE  VARCHAR(1000);
