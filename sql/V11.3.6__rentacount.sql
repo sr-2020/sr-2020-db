@@ -1,0 +1,1 @@
+alter table renta add column count integer not null default 1;
