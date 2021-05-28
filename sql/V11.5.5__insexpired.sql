@@ -1,0 +1,1 @@
+alter table renta add column if not exists expired boolean not null default false;
