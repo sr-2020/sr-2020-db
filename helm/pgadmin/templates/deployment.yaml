@@ -12,6 +12,13 @@ spec:
       labels:
         run: {{ .Release.Name }}
     spec:
+      initContainers:
+        - name: volume-mount-hack
+          image: busybox
+          command: [ "sh", "-c", "chown -R 5050:5050 /var/lib/pgadmin" ]
+          volumeMounts:
+            - name: pgadmin-storage
+              mountPath: /var/lib/pgadmin
       containers:
         - name: pgadmin
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -29,3 +36,18 @@ spec:
                 secretKeyRef:
                   name: postgres
                   key: password
+            - name: PGADMIN_SERVER_JSON_FILE
+              value: "/pgadmin4/servers.json"
+          volumeMounts:
+            - name: config-value
+              mountPath: /pgadmin4/servers.json
+              subPath: servers.json
+            - name: pgadmin-storage
+              mountPath: /var/lib/pgadmin
+      volumes:
+        - name: config-value
+          configMap:
+            name: {{ .Release.Name }}-configmap
+        - name: pgadmin-storage
+          persistentVolumeClaim:
+            claimName: {{ .Release.Name }}-pv-claim
