@@ -1,0 +1,1 @@
+alter table sku add column if not exists price numeric not null default 0;
