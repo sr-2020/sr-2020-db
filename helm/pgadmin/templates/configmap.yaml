@@ -4,3 +4,28 @@ metadata:
   name: {{ .Release.Name }}-configmap
 data:
   PGADMIN_DEFAULT_EMAIL: {{ .Values.app.email | quote }}
+  servers.json: |
+    {
+        "Servers": {
+            "1": {
+                "Name": "Postgres13 Master",
+                "Group": "Servers",
+                "Port": 5432,
+                "Username": "app",
+                "Host": "postgres13",
+                "MaintenanceDB": "postgres",
+                "SSLMode": "prefer",
+                "PassFile": "/pgadmin4/pgpassfile13"
+            },
+            "2": {
+                "Name": "Postgres Master",
+                "Group": "Servers",
+                "Port": 5432,
+                "Username": "app",
+                "Host": "postgres",
+                "MaintenanceDB": "postgres",
+                "SSLMode": "prefer",
+                "PassFile": "/pgadmin4/pgpassfile"
+            }
+        }
+    }

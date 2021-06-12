@@ -8,7 +8,7 @@ app:
 
 image:
   repository: dpage/pgadmin4
-  tag: latest
+  tag: 5.3
   pullPolicy: IfNotPresent
 
 service:
