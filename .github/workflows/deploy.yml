@@ -3,61 +3,24 @@ name: CI
 on: [push]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - name: Build & Push to dockerhub
-        uses: elgohr/Publish-Docker-Github-Action@master
-        with:
-          name: sr2020/db
-          tags: ${{ github.sha }}
-          dockerfile: Dockerfile
-          username: sr2020
-          password: ${{ secrets.DOCKER_PASSWORD }}
-
   deploy_rc:
     if: github.ref == 'refs/heads/rc'
     runs-on: ubuntu-latest
-    needs: [build]
     steps:
-      - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
-        with:
-          service_account_email: ${{ secrets.SA_EMAIL }}
-          service_account_key: ${{ secrets.SA_KEY }}
-      - run: gcloud components install kubectl
-      - run: gcloud container clusters get-credentials prod --project imposing-elixir-249711 --zone europe-west3-b
       - uses: actions/checkout@v1
-      - run: |
-          kubectl config set-context --current --namespace=production
-          curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
-          helm version
-          helm delete rc-flyway
-          helm install rc-flyway helm/flyway/ --wait \
-            -f helm/flyway/values/rc/values.yaml \
-            --set image.tag=$GITHUB_SHA
-          sleep 10
-          kubectl logs -c flyway -l job-name=rc-flyway --tail=100
+      - run: 'echo "$CONFIG" > .env'
+        shell: bash
+        env:
+          CONFIG: ${{secrets.CONFIG}}
+      - run: make migrate url=${{secrets.DB_URL}}/rc_sr2020
 
   deploy_production:
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
-    needs: [build]
     steps:
-      - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
-        with:
-          service_account_email: ${{ secrets.SA_EMAIL }}
-          service_account_key: ${{ secrets.SA_KEY }}
-      - run: gcloud components install kubectl
-      - run: gcloud container clusters get-credentials prod --project imposing-elixir-249711 --zone europe-west3-b
       - uses: actions/checkout@v1
-      - run: |
-          kubectl config set-context --current --namespace=production
-          curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
-          helm version
-          helm delete flyway
-          helm install flyway helm/flyway/ --wait \
-            -f helm/flyway/values/prod/values.yaml \
-            --set image.tag=$GITHUB_SHA
-          sleep 10
-          kubectl logs -c flyway -l job-name=flyway --tail=100
+      - run: 'echo "$CONFIG" > .env'
+        shell: bash
+        env:
+          CONFIG: ${{secrets.CONFIG}}
+      - run: make migrate url=${{secrets.DB_URL}}/sr2020
