@@ -16,55 +16,18 @@ spec:
               args:
                 - /bin/sh
                 - -c
-                - mkdir /tmp/backup && /root/krohobor db dumpall
+                - krohobor dump create
               env:
-                - name: PGHOST
-                  valueFrom:
-                    configMapKeyRef:
-                      name: {{ .Release.Name }}-configmap
-                      key: PGHOST
-                - name: PGPORT
-                  valueFrom:
-                    configMapKeyRef:
-                      name: {{ .Release.Name }}-configmap
-                      key: PGPORT
-                - name: APP_PORT
-                  valueFrom:
-                    configMapKeyRef:
-                      name: {{ .Release.Name }}-configmap
-                      key: APP_PORT
-                - name: APP_PASSWORD
-                  valueFrom:
-                    secretKeyRef:
-                      name: backup
-                      key: appPassword
-                - name: APP_CATALOG
-                  valueFrom:
-                    configMapKeyRef:
-                      name: {{ .Release.Name }}-configmap
-                      key: APP_CATALOG
-                - name: AWS_ACCESS_KEY_ID
-                  valueFrom:
-                    secretKeyRef:
-                      name: backup
-                      key: accessKeyId
-                - name: AWS_SECRET_ACCESS_KEY
-                  valueFrom:
-                    secretKeyRef:
-                      name: backup
-                      key: secretAccessKey
-                - name: AWS_REGION
-                  valueFrom:
-                    configMapKeyRef:
-                      name: {{ .Release.Name }}-configmap
-                      key: AWS_REGION
-                - name: PGUSER
-                  valueFrom:
-                    secretKeyRef:
-                      name: postgres
-                      key: user
-                - name: PGPASSWORD
-                  valueFrom:
-                    secretKeyRef:
-                      name: postgres
-                      key: password
+                - name: KROHOBOR_CONFIG
+                  value: /configs/config.yaml
+              volumeMounts:
+                - name: config
+                  mountPath: "/configs"
+                  readOnly: true
+          volumes:
+            - name: config
+              secret:
+                secretName: {{ .Release.Name }}-krohobor-secret
+                items:
+                  - key: config-secret.yaml
+                    path: config.yaml

@@ -12,8 +12,8 @@ postgres:
 
 image:
   backup:
-    repository: sr2020/krohobor
-    tag: dev
+    repository: gurkalov/krohobor
+    tag: latest
     pullPolicy: Always
   cron:
     repository: xordiv/docker-alpine-cron
