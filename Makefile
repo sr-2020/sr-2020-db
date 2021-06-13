@@ -23,7 +23,7 @@ deploy:
 	}
 
 migrate:
-	docker-compose run flyway -url=jdbc:postgresql://postgres:5432/flyway migrate
+	docker-compose run flyway -url=$(url) migrate
 
 deploy-local:
 	docker-compose rm -fs flyway
