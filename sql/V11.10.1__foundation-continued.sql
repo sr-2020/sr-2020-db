@@ -1,7 +1,6 @@
 alter table if exists foundation_node add constraint foundation_node_foundation_room_id_fk foreign key (room) references foundation_room;
 
 alter table if exists foundation_run drop column if exists role;
-alter table if exists foundation_run drop column if exists ends_on;
 alter table if exists foundation_run rename column ends_on to registration_expires_on;
 
 alter table if exists foundation_run_participant alter column character set not null;
