@@ -1,0 +1,1 @@
+update corporation_wallet set alias = 'JoyCorp' where name = 'JoyCorp';
