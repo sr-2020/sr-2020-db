@@ -5,7 +5,7 @@ create table if not exists hack_history
 	action   varchar(255),
 	main integer,
 	secondid integer,
-	parameters varchar(max)
+	parameters varchar(1000)
 );
 alter table hack_history
     owner to backend;
