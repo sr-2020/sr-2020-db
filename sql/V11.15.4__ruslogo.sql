@@ -1,0 +1,1 @@
+update corporation_wallet set logo_url = 'https://storage.googleapis.com/billingfilestorage/rus.jpg' where alias = 'Россия';
