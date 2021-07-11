@@ -1,0 +1,1 @@
+insert into product_type (name, discount_type, alias) values('Спирит', 1, 'Spirit');
