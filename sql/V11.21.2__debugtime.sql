@@ -1,0 +1,1 @@
+alter table sin add column debug_time integer null;
