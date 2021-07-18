@@ -69,3 +69,9 @@ git merge rc
 ```
 psql -h instance.evarun.ru -U backend sr2020
 ```
+
+```sh
+helm secrets install pg13 -f helm/pg13/values.yaml -f helm/pg13/secrets.yaml bitnami/postgresql
+
+helm secrets upgrade pg13 -f helm/pg13/values.yaml -f helm/pg13/secrets.yaml bitnami/postgresql
+```
