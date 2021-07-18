@@ -38,8 +38,7 @@ alter table idea owner to backend;
 create unique index if not exists idea_alias_uindex on idea (alias);
 create unique index if not exists idea_requirement_trail_uindex on idea (requirement_trail);
 
-drop table project cascade;
-drop table project cascade;
+drop table if exists project cascade;
 create table if not exists project
   (
     id   serial not null constraint project_pk primary key,
@@ -52,7 +51,7 @@ create table if not exists project
 
 
 alter table if exists project owner to backend;
-alter table if exists host add constraint host_project_id_fk foreign key (project) references project	on delete cascade;
+alter table if exists host add constraint host_project_id_fk foreign key (project) references project on delete cascade;
 
 create table if not exists research
   (
