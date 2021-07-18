@@ -1,0 +1,4 @@
+INSERT INTO authority (name) VALUES ('ROLE_RESEARCHER');
+INSERT INTO authority (name) VALUES ('ROLE_PM');
+INSERT INTO authority (name) VALUES ('ROLE_BACKDOOR_CREATOR');
+INSERT INTO authority (name) VALUES ('ROLE_QUEST_GIVER');
