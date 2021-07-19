@@ -1,0 +1,1 @@
+alter table renta add column if not exists beat integer not null default 0;
