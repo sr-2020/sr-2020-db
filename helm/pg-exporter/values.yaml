@@ -1,0 +1,10 @@
+config:
+  datasource:
+    host: postgres13
+    user: app
+    passwordSecret:
+      name: postgres
+      key: password
+    port: "5432"
+    database: postgres
+    sslmode: disable

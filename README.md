@@ -75,3 +75,17 @@ helm secrets install pg13 -f helm/pg13/values.yaml -f helm/pg13/secrets.yaml bit
 
 helm secrets upgrade pg13 -f helm/pg13/values.yaml -f helm/pg13/secrets.yaml bitnami/postgresql
 ```
+
+kubectl port-forward pg13-postgresql-primary-0 5430:5432
+
+```sh
+helm install pg-exporter -f helm/pg-exporter/values.yaml prometheus-community/prometheus-postgres-exporter
+
+helm upgrade pg-exporter -f helm/pg-exporter/values.yaml prometheus-community/prometheus-postgres-exporter
+```
+
+```sh
+helm install prometheus -f helm/prometheus/values.yaml prometheus-community/prometheus
+
+helm upgrade prometheus -f helm/prometheus/values.yaml prometheus-community/prometheus
+```
