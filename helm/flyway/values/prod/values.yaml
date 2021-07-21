@@ -1,2 +1,2 @@
 flyway:
-  url: jdbc:postgresql://postgres13:5432/sr2020
+  url: jdbc:postgresql://pg13-postgresql:5432/sr2020

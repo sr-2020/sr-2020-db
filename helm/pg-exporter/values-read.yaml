@@ -1,6 +1,6 @@
 config:
   datasource:
-    host: pg13-postgresql
+    host: pg13-postgresql-read
     user: app
     passwordSecret:
       name: postgres
