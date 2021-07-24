@@ -1,0 +1,1 @@
+insert into system_settings (key, value) values('secret','fee6f53e');
