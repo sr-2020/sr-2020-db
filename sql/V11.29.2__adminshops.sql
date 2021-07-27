@@ -1,0 +1,1 @@
+insert into system_settings (key, value) values('admin_shop', '52; 1; 2;');
